@@ -6,5 +6,5 @@ Este repositório contém o **Backend** de uma aplicação de **Agenda Eletrôni
 
 O projeto foi construído utilizando o ecossistema **Node.js** e o framework **Express.js**, com foco em rotas RESTful, autenticação de usuários e persistência de dados.
 
-Desenvolvido por: *Maria Fernanda Leal Pinheiro* 
+Desenvolvido por: *Maria Fernanda Leal Pinheiro*   
 Disciplina: Programação Web Back-End (EC48B-C71) Professor(es): Monique Emídio de Oliveira e Willian Massami Watanabe
