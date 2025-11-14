@@ -1,8 +1,8 @@
-import connectDB from './db.js';
-import disconnectDB from './db.js';
+import connectDB from './config/db.js';
+import disconnectDB from './config/db.js';
 import { Logger } from './logger.js';
-import { User } from './User.js';
-import { Task } from './Task.js';
+import { User } from './models/User.js';
+import { Task } from './models/Task.js';
 
 async function run() {
   await connectDB();

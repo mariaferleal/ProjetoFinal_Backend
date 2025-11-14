@@ -1,9 +1,9 @@
-import { connectDB, disconnectDB } from './db.js';
+import { connectDB, disconnectDB } from './config/db.js';
 import { Logger } from './logger.js';
-import { User } from './User.js';
-import { Task } from './Task.js';
-import { Tag } from './Tag.js';
-import { Schedule } from './Schedule.js';
+import { User } from './models/User.js';
+import { Task } from './models/Task.js';
+import { Tag } from './models/Tag.js';
+import { Schedule } from './models/Schedule.js';
 
 async function main() {
   await connectDB();
