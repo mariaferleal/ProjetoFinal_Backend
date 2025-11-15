@@ -1,4 +1,5 @@
 import { Tag } from '../models/Tag.js';
+import { User } from '../models/User.js';
 
 export async function listTags(req, res) {
   const tags = await Tag.getAll();
@@ -14,8 +15,9 @@ export async function getTag(req, res) {
 export async function createTag(req, res) {
   try {
     const data = req.body || {};
+    const user = await User.getById(data.userId);
+    if (!user) return res.status(400).json({ message: 'Usuário não encontrado' });
     if (!data.name) return res.status(400).json({ message: 'name é obrigatório' });
-    data.userId = req.session.userId;
     const newTag = await Tag.create(data);
     res.status(201).json(newTag);
   } catch (err) {
@@ -25,6 +27,8 @@ export async function createTag(req, res) {
 
 export async function updateTag(req, res) {
   try {
+    const tag = await Tag.getById(req.params.id);
+    if (!tag) return res.status(404).json({ message: 'Tag não encontrada' });
     const updated = await Tag.update(req.params.id, req.body || {});
     res.json(updated);
   } catch (err) {

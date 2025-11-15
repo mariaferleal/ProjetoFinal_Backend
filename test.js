@@ -29,6 +29,7 @@ async function run() {
     await Task.remove(task._id);
     await User.remove(user._id);
     Logger.info('Remoção concluída');
+    Logger.info('Teste finalizado com sucesso');
   } catch (err) {
     Logger.error('Erro no teste', err);
   } finally {

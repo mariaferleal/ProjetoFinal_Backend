@@ -25,6 +25,8 @@ export async function createSchedule(req, res) {
 
 export async function updateSchedule(req, res) {
   try {
+    const schedule = await Schedule.getById(req.params.id);
+    if (!schedule) return res.status(404).json({ message: 'Agenda não encontrada' });
     const updated = await Schedule.update(req.params.id, req.body || {});
     res.json(updated);
   } catch (err) {
@@ -34,6 +36,8 @@ export async function updateSchedule(req, res) {
 
 export async function deleteSchedule(req, res) {
   try {
+    const schedule = await Schedule.getById(req.params.id);
+    if (!schedule) return res.status(404).json({ message: 'Agenda não encontrada' });
     await Schedule.remove(req.params.id);
     res.json({ message: 'Agenda removida com sucesso' });
   } catch (err) {

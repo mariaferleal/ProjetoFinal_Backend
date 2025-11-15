@@ -32,6 +32,8 @@ export async function createUser(req, res) {
 
 export async function updateUser(req, res) {
   try {
+    const user = await User.getById(req.params.id);
+    if (!user) return res.status(404).json({ message: 'Usuário não encontrado' });
     const updated = await User.update(req.params.id, req.body || {});
     res.json(updated);
   } catch (err) {
@@ -41,6 +43,8 @@ export async function updateUser(req, res) {
 
 export async function deleteUser(req, res) {
   try {
+    const user = await User.getById(req.params.id);
+    if (!user) return res.status(404).json({ message: 'Usuário não encontrado' });
     await User.remove(req.params.id);
     res.json({ message: 'Usuário removido com sucesso' });
   } catch (err) {
